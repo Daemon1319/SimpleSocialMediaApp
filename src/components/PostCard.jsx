@@ -33,12 +33,13 @@ function PostCard({ post, onDeletePost, onUpdatePost, username }) {
       ) : (
         <>
           <p>{post.content}</p>
-          {post.author === username && (
+          {post.image ? <img src={post.image} alt="Post" /> : null}
+          {post.author === username ? (
             <>
               <button onClick={() => setIsEditing(true)}>Edit</button>
               <button onClick={() => onDeletePost(post.id)}>Delete</button>
             </>
-          )}
+          ) : null}
         </>
       )}
     </article>
