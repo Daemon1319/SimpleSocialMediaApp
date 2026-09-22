@@ -18,7 +18,7 @@ function PostForm({ onAddPost }) {
   function handleSubmit(e) {
     e.preventDefault()
 
-    if (!content) {
+    if (!content.trim() && !image) {
       return
     }
 
@@ -41,8 +41,23 @@ function PostForm({ onAddPost }) {
         onChange={(e) => setContent(e.target.value)}
         placeholder="What's are your thoughts?"
       />
-      <input type="file" accept="image/*" onChange={handleImageUpload}/>
-      <button type="submit">Post</button>
+
+      {image ? (
+        <div className="image-preview">
+          <img src={image} alt="Preview" />
+          <button type="button" className="remove-image" onClick={() => setImage(null)}>
+            ✕
+          </button>
+        </div>
+      ) : null}
+
+      <div className="form-actions">
+        <label className="file-upload">
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+          <span>Choose Image</span>
+        </label>
+        <button type="submit">Post</button>
+      </div>
     </form>
   )
 }

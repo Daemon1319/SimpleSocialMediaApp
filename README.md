@@ -1,16 +1,50 @@
-# React + Vite
+# Simple Social Media App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Getting Started
 
-Currently, two official plugins are available:
+Follow these steps to run the project locally:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. **Clone the repository**
 
-## React Compiler
+```bash
+   git clone https://github.com/Daemon1319/SimpleSocialMediaApp.git
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Navigate into the project folder**
 
-## Expanding the ESLint configuration
+```bash
+   cd SimpleSocialMediaApp
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. **Install the dependencies**
+
+```bash
+   npm install
+```
+
+4. **Start the development server**
+
+```bash
+   npm run dev
+```
+
+5. Open your browser and go to the local URL shown in the terminal (usually `http://localhost:5173`).
+
+## Features
+
+- **Username entry** – Enter a username when you first open the app. This name is used as the author of any posts you create.
+- **Create posts** – You can post:
+  - Text only
+  - Image only
+  - Both text and image
+- **Image preview** – See a preview of the image before posting, with the option to remove it.
+- **Search posts** – Filter posts by content or author name.
+- **Sort posts** – Sort by newest or oldest.
+- **Edit & delete your own posts** – Only posts created with the same username as the one you entered can be edited or deleted.
+- **Default posts** – The app comes with some pre-loaded posts so you can see how everything works right away.
+
+## Important Notes
+
+- This app does not use a database or localStorage. All data lives only in the browser's memory.
+- Refreshing the page will reset everything back to the original default posts.
+- If you enter a username that matches one of the default posts' authors, you will be able to edit or delete those posts. They will still return to their original state after a refresh.

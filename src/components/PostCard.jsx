@@ -18,7 +18,15 @@ function PostCard({ post, onDeletePost, onUpdatePost, username }) {
     <article className="post-card">
       <header>
         <strong>{post.author}</strong>
-        <time>{post.date}</time>
+        <time dateTime={post.date}>
+          {new Date(post.date).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+          })}
+        </time>
       </header>
 
       {isEditing ? (
@@ -27,17 +35,26 @@ function PostCard({ post, onDeletePost, onUpdatePost, username }) {
             value={editedContent}
             onChange={(e) => setEditedContent(e.target.value)}
           />
+          {post.image ? (
+            <div className="image-preview">
+              <img src={post.image} alt="Post" />
+            </div>
+          ) : null}
           <button onClick={handleSave}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
         </>
       ) : (
         <>
           <p>{post.content}</p>
-          {post.image ? <img src={post.image} alt="Post" /> : null}
+          {post.image ? <img src={post.image} alt="Post"/> : null}
           {post.author === username ? (
             <>
               <button onClick={() => setIsEditing(true)}>Edit</button>
-              <button onClick={() => onDeletePost(post.id)}>Delete</button>
+              <button onClick={() => {
+                if (window.confirm("Are you sure you want to delete this post?")) {
+                  onDeletePost(post.id)
+                }
+              }}>Delete</button>
             </>
           ) : null}
         </>

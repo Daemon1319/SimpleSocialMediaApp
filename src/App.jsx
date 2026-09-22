@@ -2,6 +2,7 @@ import { useState } from "react"
 import Posts from "./data/posts.js"
 import Newsfeed from "./components/Newsfeed.jsx"
 import PostForm from "./components/PostForm.jsx"
+import "./App.css"
 
 function App() {
   const [posts, setPosts] = useState(Posts)
@@ -13,7 +14,7 @@ function App() {
   if (!username) {
     return (
       <main className="input-username-form">
-        <h1>Welcome to Thoughts</h1>
+        <h1>Your name I guess?</h1>
         <form onSubmit={(e) => {
           e.preventDefault()
           if (nameInput.trim()) setUsername(nameInput.trim())
