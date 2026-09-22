@@ -5,6 +5,10 @@ function PostCard({ post, onDeletePost, onUpdatePost, username }) {
   const [editedContent, setEditedContent] = useState(post.content)
 
   function handleSave() {
+    if (!editedContent.trim() && !post.image) {
+      return
+    }
+
     onUpdatePost(post.id, editedContent)
     setIsEditing(false)
   }
@@ -46,7 +50,7 @@ function PostCard({ post, onDeletePost, onUpdatePost, username }) {
       ) : (
         <>
           <p>{post.content}</p>
-          {post.image ? <img src={post.image} alt="Post"/> : null}
+          {post.image ? <img src={post.image} alt="Post" /> : null}
           {post.author === username ? (
             <>
               <button onClick={() => setIsEditing(true)}>Edit</button>
